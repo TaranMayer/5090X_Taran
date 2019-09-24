@@ -2,10 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\include",
+    "\\include\\gif-pros",
     "\\src",
     "\\src\\comp_controlled_code",
     "\\src\\definitions"
   ],
-  "SelectedNode": "\\firmware",
+  "SelectedNode": "\\src\\definitions\\sensors.cpp",
   "PreviewInSolutionExplorer": false
 }

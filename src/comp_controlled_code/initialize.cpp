@@ -2,7 +2,7 @@
 #include "motors_setup.h"
 #include "sensors.h"
 #include "auto_selector.h"
-#include "C:\Users\Taran Mayer\Desktop\5090X_Main_Codebase\include\gif-pros\gifclass.hpp"
+#include "C:\Users\Taran Mayer\Desktop\5090X_Taran\include\gif-pros\gifclass.hpp"
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -21,7 +21,8 @@ void run_splash(void*) {
 	lv_obj_set_style(obj, &lv_style_transp);
 	lv_obj_align(obj, NULL, LV_ALIGN_CENTER, 0, 0);
 
-	Gif gif("/usd/radioactive.gif", obj, Gif::Transparency::automatic);
+	Gif gif("/usd/radioactive.gif", obj);
+
 	pros::delay(400);
 	lv_obj_align(img1, NULL, LV_ALIGN_IN_TOP_LEFT, 0, 0);
 	auto_startup();
@@ -35,6 +36,8 @@ void initialize() {
 	Task lvgl_setup_task(display_new_setup, nullptr, "display_new_setup");
 
 	pot.calibrate();
+
+	intial_pot = pot.get_value();
 
 	FR.set_reversed(true);
 	BR.set_reversed(true);

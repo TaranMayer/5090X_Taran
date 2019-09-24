@@ -2,6 +2,7 @@
 #include "auto_selector.h"
 #include "sensors.h"
 #include "functions_assorted.h"
+#include "gif-pros/gifclass.hpp"
 
 
 int min_auto_2 = 12;
@@ -106,14 +107,12 @@ void find_number() {
 		number = 0;
 	}
 
-	printf("Pot Value: %d   Plugged In: %d   Number: %d \n", pot.get_value(), pluggedIn, number);
+	
 
 }
 
 void get_plugged_in() {
-	if ((pot.get_value() != intial_pot && pot.get_value() != intial_pot + 1 && pot.get_value() != intial_pot + 2 && pot.get_value() != intial_pot - 1 && pot.get_value() != intial_pot - 2) || (pot.get_value() < 40 || pot.get_value() > 60)) {
-		pluggedIn = 1;
-	}
+	
 }
 
 
@@ -182,36 +181,59 @@ void get_plugged_in() {
 
 	void display_new_setup(void*) {
 
+		
+
+		intial_pot = pot.get_value();
+		
+		pluggedIn = 0;
+		pros::delay(400);
+
 		lv_obj_t * img2 = lv_img_create(lv_scr_act(), NULL);
 		lv_img_set_src(img2, &robot_pic);
 
-		lv_obj_t* desc_title = lv_obj_create(lv_scr_act(), NULL);
-		lv_obj_t* desc_body = lv_obj_create(lv_scr_act(), NULL);
+		lv_obj_t* desc_title = lv_label_create(lv_scr_act(), NULL);
+		lv_obj_t* desc_body = lv_label_create(lv_scr_act(), NULL);
+
+		lv_label_set_recolor(desc_title, true);
+		lv_label_set_recolor(desc_body, true);
+
+		lv_obj_align(desc_title, NULL, LV_ALIGN_IN_TOP_LEFT, 260, 10);
+		lv_obj_align(desc_body, NULL, LV_ALIGN_IN_TOP_LEFT, 260, 40);
 
 		while (true)
 		{
-			if (number == 1) {
-				move(img2, 12, 49);
-				lv_obj_align(desc_title, NULL, LV_ALIGN_IN_TOP_LEFT, 290, 10);
-				lv_label_set_text(desc_title, "#ff0000 Auton Routine 1#");
-				lv_label_set_text(desc_body, "Scores _ #ff9900 orange# cubes \nScores _ #24c400 green# cubes\nScores _ #8c00bf purple# cubes\n\nPlaces _ #ff9900 orange# cubes \nPlaces _ #24c400 green# cubes\nPlaces _ #8c00bf purple# cubes");
+			printf("Pot Value: %d   Plugged In: %d   Number: %d \n", pot.get_value(), pluggedIn, intial_pot);
+
+
+			if ((pot.get_value() != 51 && pot.get_value() != 51 + 1 && pot.get_value() != 51 + 2 && pot.get_value() != 51 - 1 && pot.get_value() != 51 - 2) || (pot.get_value() < 40 || pot.get_value() > 60)) {
+				pluggedIn = 1;
 			}
-			else if (number == 2) {
-				lv_obj_align(desc_title, NULL, LV_ALIGN_IN_TOP_LEFT, 290, 10);
-				lv_label_set_text(desc_title, "#ff0000 Auton Routine 2#");
-				lv_label_set_text(desc_body, "Scores _ #ff9900 orange# cubes \nScores _ #24c400 green# cubes\nScores _ #8c00bf purple# cubes\n\nPlaces _ #ff9900 orange# cubes \nPlaces _ #24c400 green# cubes\nPlaces _ #8c00bf purple# cubes");
-			}
-			else if (number == 3) {
-				move(img2, 192, 49);
-				lv_obj_align(desc_title, NULL, LV_ALIGN_IN_TOP_LEFT, 290, 10);
-				lv_label_set_text(desc_title, "#0000ff Auton Routine 3#");
-				lv_label_set_text(desc_body, "Scores _ #ff9900 orange# cubes \nScores _ #24c400 green# cubes\nScores _ #8c00bf purple# cubes\n\nPlaces _ #ff9900 orange# cubes \nPlaces _ #24c400 green# cubes\nPlaces _ #8c00bf purple# cubes");
-			}
-			else if (number == 4) {
-				move(img2, 192, 154);
-				lv_obj_align(desc_title, NULL, LV_ALIGN_IN_TOP_LEFT, 290, 10);
-				lv_label_set_text(desc_title, "#0000ff Auton Routine 4#");
-				lv_label_set_text(desc_body, "Scores _ #ff9900 orange# cubes \nScores _ #24c400 green# cubes\nScores _ #8c00bf purple# cubes\n\nPlaces _ #ff9900 orange# cubes \nPlaces _ #24c400 green# cubes\nPlaces _ #8c00bf purple# cubes");
+			
+			if (pluggedIn == 1) {
+				if (number == 1) {
+					move(img2, 12, 49);
+					lv_obj_align(desc_title, NULL, LV_ALIGN_IN_TOP_LEFT, 290, 10);
+					lv_label_set_text(desc_title, "#ff0000 Auton Routine 1#");
+					lv_label_set_text(desc_body, "Scores _ #ff9900 orange# cubes \nScores _ #24c400 green# cubes\nScores _ #8c00bf purple# cubes\n\nPlaces _ #ff9900 orange# cubes \nPlaces _ #24c400 green# cubes\nPlaces _ #8c00bf purple# cubes");
+				}
+				else if (number == 2) {
+					move(img2, 12, 154);
+					lv_obj_align(desc_title, NULL, LV_ALIGN_IN_TOP_LEFT, 290, 10);
+					lv_label_set_text(desc_title, "#ff0000 Auton Routine 2#");
+					lv_label_set_text(desc_body, "Scores _ #ff9900 orange# cubes \nScores _ #24c400 green# cubes\nScores _ #8c00bf purple# cubes\n\nPlaces _ #ff9900 orange# cubes \nPlaces _ #24c400 green# cubes\nPlaces _ #8c00bf purple# cubes");
+				}
+				else if (number == 3) {
+					move(img2, 192, 49);
+					lv_obj_align(desc_title, NULL, LV_ALIGN_IN_TOP_LEFT, 290, 10);
+					lv_label_set_text(desc_title, "#0000ff Auton Routine 3#");
+					lv_label_set_text(desc_body, "Scores _ #ff9900 orange# cubes \nScores _ #24c400 green# cubes\nScores _ #8c00bf purple# cubes\n\nPlaces _ #ff9900 orange# cubes \nPlaces _ #24c400 green# cubes\nPlaces _ #8c00bf purple# cubes");
+				}
+				else if (number == 4) {
+					move(img2, 192, 154);
+					lv_obj_align(desc_title, NULL, LV_ALIGN_IN_TOP_LEFT, 290, 10);
+					lv_label_set_text(desc_title, "#0000ff Auton Routine 4#");
+					lv_label_set_text(desc_body, "Scores _ #ff9900 orange# cubes \nScores _ #24c400 green# cubes\nScores _ #8c00bf purple# cubes\n\nPlaces _ #ff9900 orange# cubes \nPlaces _ #24c400 green# cubes\nPlaces _ #8c00bf purple# cubes");
+				}
 			}
 			else if (number == 0) {
 				move(img2, 500, 500);
@@ -222,13 +244,7 @@ void get_plugged_in() {
 				lv_label_set_recolor(desc_title, true);
 				lv_label_set_recolor(desc_body, true);
 				lv_label_set_text(desc_title, "#e5ff00 Auton Routine Not Set#");
-				lv_label_set_text(desc_body, "Nothing");
-			}
-			else {
-				lv_label_set_recolor(desc_title, true);
-				lv_label_set_recolor(desc_body, true);
-				lv_label_set_text(desc_title, "#e5ff00 Auton Routine Not Set#");
-				lv_label_set_text(desc_body, "Ya done goofed");
+				lv_label_set_text(desc_body, "");
 			}
 
 			pros::delay(20);

@@ -169,7 +169,8 @@ bin/definitions/auto_selector.cpp.o: src/definitions/auto_selector.cpp \
  include/okapi/api/units/QTorque.hpp include/okapi/api/units/QVolume.hpp \
  include/okapi/impl/util/timer.hpp include/pros/apix.h \
  include/pros/serial.h include/pros/serial.hpp include/auto_selector.h \
- include/sensors.h include/functions_assorted.h
+ include/sensors.h include/functions_assorted.h \
+ include/gif-pros/gifclass.hpp include/gif-pros/gifdec.h
 
 include/main.h:
 
@@ -652,3 +653,7 @@ include/auto_selector.h:
 include/sensors.h:
 
 include/functions_assorted.h:
+
+include/gif-pros/gifclass.hpp:
+
+include/gif-pros/gifdec.h:

@@ -171,8 +171,8 @@ bin/comp_controlled_code/initialize.cpp.o: \
  include/okapi/impl/util/timer.hpp include/pros/apix.h \
  include/pros/serial.h include/pros/serial.hpp include/motors_setup.h \
  include/sensors.h include/auto_selector.h \
- C:\Users\Taran\ Mayer\Desktop\5090X_Main_Codebase\include\gif-pros\gifclass.hpp \
- C:\Users\Taran\ Mayer\Desktop\5090X_Main_Codebase\include\gif-pros\gifdec.h
+ C:\Users\Taran\ Mayer\Desktop\5090X_Taran\include\gif-pros\gifclass.hpp \
+ C:\Users\Taran\ Mayer\Desktop\5090X_Taran\include\gif-pros\gifdec.h
 
 include/main.h:
 
@@ -656,6 +656,6 @@ include/sensors.h:
 
 include/auto_selector.h:
 
-C:\Users\Taran\ Mayer\Desktop\5090X_Main_Codebase\include\gif-pros\gifclass.hpp:
+C:\Users\Taran\ Mayer\Desktop\5090X_Taran\include\gif-pros\gifclass.hpp:
 
-C:\Users\Taran\ Mayer\Desktop\5090X_Main_Codebase\include\gif-pros\gifdec.h:
+C:\Users\Taran\ Mayer\Desktop\5090X_Taran\include\gif-pros\gifdec.h:
